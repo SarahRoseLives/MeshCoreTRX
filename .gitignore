@@ -1,0 +1,24 @@
+# Build output
+/build/
+*.exe
+*.dll
+*.a
+*.o
+*.obj
+
+# Local captures and test artifacts
+*.wav
+*.iq
+*.bin
+sniff_out.txt
+sniff_err.txt
+events.log
+identity.txt
+config.json
+
+# Editors / OS
+.vscode/
+.idea/
+*.user
+Thumbs.db
+desktop.ini
