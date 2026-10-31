@@ -20,6 +20,7 @@ add_library(mctrx_core STATIC
     src/app/engine.cpp
     src/app/radio.cpp
     src/io/wav_writer.cpp
+    src/sdr/pluto_context.cpp
     src/sdr/pluto_tx.cpp
     src/sdr/pluto_radio.cpp
     src/sdr/decimator.cpp

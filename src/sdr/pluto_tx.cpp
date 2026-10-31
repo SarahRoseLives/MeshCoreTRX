@@ -1,4 +1,5 @@
 #include "pluto_tx.h"
+#include "pluto_context.h"
 
 #include <iio.h>
 
@@ -39,12 +40,8 @@ PlutoTx::~PlutoTx() { close(); }
 bool PlutoTx::open(const std::string& uri, std::string& err)
 {
     close();
-    ctx_ = iio_create_context_from_uri(uri.c_str());
-    if (!ctx_) {
-        err = "cannot open Pluto context: " + uri;
-        return false;
-    }
-    uri_ = uri;
+    ctx_ = openPlutoContext(uri, uri_, err);
+    if (!ctx_) return false;
 
     phy_ = iio_context_find_device(ctx_, "ad9361-phy");
     tx_ = iio_context_find_device(ctx_, "cf-ad9361-dds-core-lpc");

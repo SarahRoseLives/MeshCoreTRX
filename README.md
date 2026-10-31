@@ -38,6 +38,10 @@ powershell -ExecutionPolicy Bypass -File .\build.ps1
 Or open the GUI and press **Start radio**. The chat box auto-focuses: type and
 press Enter to send.
 
+If the Pluto's USB path changes (for example `usb:1.8.5` becomes `usb:1.17.5`),
+the app automatically scans and uses the first Pluto it finds. `ip:192.168.2.1`
+also works.
+
 Command-line transmitter:
 
 ```powershell

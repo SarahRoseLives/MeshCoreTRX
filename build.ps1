@@ -14,12 +14,14 @@ foreach ($exe in @("MeshCoreTRX-cli.exe", "MeshCoreTRX.exe")) {
         Copy-Item -LiteralPath $src -Destination (Join-Path $PSScriptRoot $exe) -Force
     }
 }
-foreach ($d in @("libiio.dll", "libusb-1.0.dll", "libxml2-16.dll", "zlib1.dll", "libiconv-2.dll",
-                 "libzstd.dll", "liblzma-5.dll", "libgcc_s_seh-1.dll", "libstdc++-6.dll",
-                 "libwinpthread-1.dll", "glfw3.dll")) {
+$dlls = @("libiio.dll", "libusb-1.0.dll", "libxml2-16.dll", "zlib1.dll", "libiconv-2.dll",
+          "libzstd.dll", "liblzma-5.dll", "libgcc_s_seh-1.dll", "libstdc++-6.dll",
+          "libwinpthread-1.dll", "libssp-0.dll", "glfw3.dll")
+foreach ($d in $dlls) {
     $src = Join-Path $mingw "bin\$d"
     if (Test-Path -LiteralPath $src) {
         Copy-Item -LiteralPath $src -Destination $PSScriptRoot -Force
+        Copy-Item -LiteralPath $src -Destination (Join-Path $PSScriptRoot "build") -Force
     }
 }
 Write-Host "built MeshCoreTRX.exe and MeshCoreTRX-cli.exe"
